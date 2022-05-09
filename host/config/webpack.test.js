@@ -1,12 +1,11 @@
+const { merge } = require('webpack-merge');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 
-const { merge } = require('webpack-merge');
-const common = require('../webpack.common');
-const utils = require("./webpack/utils");
 const deps = require('../package.json').dependencies;
-
-const remotes = require('./webpack/mfe/remotes');
+const common = require('../webpack.common');
 const exposes = require('./webpack/mfe/exposes');
+const remotes = require('./webpack/mfe/remotes');
+const utils = require('./webpack/utils');
 
 module.exports = merge(common, {
   plugins: [
@@ -27,6 +26,5 @@ module.exports = merge(common, {
         },
       },
     }),
-  ]
+  ],
 });
-

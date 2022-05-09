@@ -1,19 +1,16 @@
-
-const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
-const TerserPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-
+const TerserPlugin = require('terser-webpack-plugin');
 const { merge } = require('webpack-merge');
-const common = require('../webpack.common');
-const utils = require("./webpack/utils");
-const deps = require('../package.json').dependencies;
+const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 
-const remotes = require('./webpack/mfe/remotes');
+const deps = require('../package.json').dependencies;
+const common = require('../webpack.common');
 const exposes = require('./webpack/mfe/exposes');
+const remotes = require('./webpack/mfe/remotes');
+const utils = require('./webpack/utils');
 
 module.exports = merge(common, {
   mode: 'production',
-
 
   optimization: {
     minimize: true,
@@ -63,6 +60,5 @@ module.exports = merge(common, {
         },
       },
     }),
-  ]
+  ],
 });
-
